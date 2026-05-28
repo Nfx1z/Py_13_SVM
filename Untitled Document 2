@@ -1,0 +1,2053 @@
+Config: tune=True, n_features=200
+
+Total segments: 120  skipped: 0
+
+============================================================
+  MODEL 0 — Movement Classifier (6 classes)
+============================================================
+
+Running LOSO (10 folds) for Movement...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.001, 'svm__degree': 3, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 50}
+  Overall LOSO Accuracy: 0.6167 (61.7%)
+                 precision    recall  f1-score   support
+
+       Jep Kiri       0.70      0.70      0.70        20
+      Jep Kanan       0.67      0.70      0.68        20
+ Tangkisan Kiri       0.62      0.65      0.63        20
+Tangkisan Kanan       0.53      0.50      0.51        20
+ Kombinasi Kiri       0.65      0.55      0.59        20
+Kombinasi Kanan       0.55      0.60      0.57        20
+
+       accuracy                           0.62       120
+      macro avg       0.62      0.62      0.62       120
+   weighted avg       0.62      0.62      0.62       120
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 3, 'svm__gamma': 0.001, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.6167
+  >>> Fixed‑param LOSO       : 0.6250
+  >>> Difference             : -0.0083
+
+
+============================================================
+  MODEL Correctness — Jep Kiri
+
+Running LOSO (10 folds) for Correctness-Jep Kiri...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.001, 'svm__degree': 2, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 2.0, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 100}
+  Overall LOSO Accuracy: 0.8000 (80.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.80      0.80      0.80        10
+       Benar       0.80      0.80      0.80        10
+
+    accuracy                           0.80        20
+   macro avg       0.80      0.80      0.80        20
+weighted avg       0.80      0.80      0.80        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 100, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 2.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 2, 'svm__gamma': 0.001, 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.8000
+  >>> Fixed‑param LOSO       : 0.8000
+  >>> Difference             : +0.0000
+
+
+============================================================
+  MODEL Correctness — Jep Kanan
+
+Running LOSO (10 folds) for Correctness-Jep Kanan...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 1, 'svm__degree': 3, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.5, 'svm__class_weight': 'balanced', 'svm__C': 0.001, 'select__k': 50}
+  Overall LOSO Accuracy: 0.6000 (60.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.58      0.70      0.64        10
+       Benar       0.62      0.50      0.56        10
+
+    accuracy                           0.60        20
+   macro avg       0.60      0.60      0.60        20
+weighted avg       0.60      0.60      0.60        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 0.001, 'svm__class_weight': 'balanced', 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovr', 'svm__degree': 3, 'svm__gamma': 1, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.6000
+  >>> Fixed‑param LOSO       : 0.4500
+  >>> Difference             : +0.1500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kiri
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kiri...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.1, 'svm__degree': 5, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.1, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 200}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.55      0.60      0.57        10
+       Benar       0.56      0.50      0.53        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.55        20
+weighted avg       0.55      0.55      0.55        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 200, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 0.1, 'svm__decision_function_shape': 'ovr', 'svm__degree': 5, 'svm__gamma': 0.1, 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : +0.0500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kanan
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kanan...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'rbf', 'svm__gamma': 1, 'svm__degree': 4, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 2.0, 'svm__class_weight': 'balanced', 'svm__C': 10, 'select__k': 300}
+  Overall LOSO Accuracy: 0.4500 (45.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.45      0.50      0.48        10
+       Benar       0.44      0.40      0.42        10
+
+    accuracy                           0.45        20
+   macro avg       0.45      0.45      0.45        20
+weighted avg       0.45      0.45      0.45        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 10, 'svm__class_weight': 'balanced', 'svm__coef0': 2.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 4, 'svm__gamma': 1, 'svm__kernel': 'rbf', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.4500
+  >>> Fixed‑param LOSO       : 0.7500
+  >>> Difference             : -0.3000
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kiri
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kiri...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': True, 'svm__kernel': 'rbf', 'svm__gamma': 0.001, 'svm__degree': 5, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 2.0, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 300}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.55      0.60      0.57        10
+       Benar       0.56      0.50      0.53        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.55        20
+weighted avg       0.55      0.55      0.55        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 2.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 5, 'svm__gamma': 0.001, 'svm__kernel': 'rbf', 'svm__shrinking': True, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.6000
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kanan
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kanan...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 'auto', 'svm__degree': 4, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 1.0, 'svm__class_weight': 'balanced', 'svm__C': 10, 'select__k': 300}
+  Overall LOSO Accuracy: 0.3500 (35.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.36      0.40      0.38        10
+       Benar       0.33      0.30      0.32        10
+
+    accuracy                           0.35        20
+   macro avg       0.35      0.35      0.35        20
+weighted avg       0.35      0.35      0.35        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 10, 'svm__class_weight': 'balanced', 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 4, 'svm__gamma': 'auto', 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.3500
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : -0.1500
+  
+  Config: tune=True, n_features=200
+
+Total segments: 120  skipped: 0
+
+============================================================
+  MODEL 0 — Movement Classifier (6 classes)
+============================================================
+
+Running LOSO (10 folds) for Movement...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': True, 'svm__kernel': 'linear', 'svm__gamma': 10, 'svm__degree': 4, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': None, 'svm__C': 0.01, 'select__k': 150}
+  Overall LOSO Accuracy: 0.6083 (60.8%)
+                 precision    recall  f1-score   support
+
+       Jep Kiri       0.68      0.65      0.67        20
+      Jep Kanan       0.70      0.70      0.70        20
+ Tangkisan Kiri       0.60      0.60      0.60        20
+Tangkisan Kanan       0.48      0.55      0.51        20
+ Kombinasi Kiri       0.62      0.65      0.63        20
+Kombinasi Kanan       0.59      0.50      0.54        20
+
+       accuracy                           0.61       120
+      macro avg       0.61      0.61      0.61       120
+   weighted avg       0.61      0.61      0.61       120
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 150, 'svm__C': 0.01, 'svm__class_weight': None, 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 4, 'svm__gamma': 10, 'svm__kernel': 'linear', 'svm__shrinking': True, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.6083
+  >>> Fixed‑param LOSO       : 0.6250
+  >>> Difference             : -0.0167
+
+
+============================================================
+  MODEL Correctness — Jep Kiri
+
+Running LOSO (10 folds) for Correctness-Jep Kiri...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': True, 'svm__kernel': 'poly', 'svm__gamma': 0.001, 'svm__degree': 4, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.5, 'svm__class_weight': 'balanced', 'svm__C': 10, 'select__k': 150}
+  Overall LOSO Accuracy: 0.8500 (85.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.82      0.90      0.86        10
+       Benar       0.89      0.80      0.84        10
+
+    accuracy                           0.85        20
+   macro avg       0.85      0.85      0.85        20
+weighted avg       0.85      0.85      0.85        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 150, 'svm__C': 10, 'svm__class_weight': 'balanced', 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovo', 'svm__degree': 4, 'svm__gamma': 0.001, 'svm__kernel': 'poly', 'svm__shrinking': True, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.8500
+  >>> Fixed‑param LOSO       : 0.8500
+  >>> Difference             : +0.0000
+
+
+============================================================
+  MODEL Correctness — Jep Kanan
+
+Running LOSO (10 folds) for Correctness-Jep Kanan...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.01, 'svm__degree': 2, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.5, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 50}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.55      0.60      0.57        10
+       Benar       0.56      0.50      0.53        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.55        20
+weighted avg       0.55      0.55      0.55        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovr', 'svm__degree': 2, 'svm__gamma': 0.01, 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : +0.0500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kiri
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kiri...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'poly', 'svm__gamma': 'scale', 'svm__degree': 5, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.5, 'svm__class_weight': 'balanced', 'svm__C': 0.1, 'select__k': 300}
+  Overall LOSO Accuracy: 0.3500 (35.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.29      0.20      0.24        10
+       Benar       0.38      0.50      0.43        10
+
+    accuracy                           0.35        20
+   macro avg       0.34      0.35      0.34        20
+weighted avg       0.34      0.35      0.34        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 0.1, 'svm__class_weight': 'balanced', 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovo', 'svm__degree': 5, 'svm__gamma': 'scale', 'svm__kernel': 'poly', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.3500
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : -0.1500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kanan
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kanan...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.01, 'svm__degree': 4, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.5, 'svm__class_weight': 'balanced', 'svm__C': 100, 'select__k': 300}
+  Overall LOSO Accuracy: 0.6000 (60.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.58      0.70      0.64        10
+       Benar       0.62      0.50      0.56        10
+
+    accuracy                           0.60        20
+   macro avg       0.60      0.60      0.60        20
+weighted avg       0.60      0.60      0.60        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 100, 'svm__class_weight': 'balanced', 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovo', 'svm__degree': 4, 'svm__gamma': 0.01, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.6000
+  >>> Fixed‑param LOSO       : 0.6500
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kiri
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kiri...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'rbf', 'svm__gamma': 0.001, 'svm__degree': 5, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.5, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 300}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.54      0.70      0.61        10
+       Benar       0.57      0.40      0.47        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.54        20
+weighted avg       0.55      0.55      0.54        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovo', 'svm__degree': 5, 'svm__gamma': 0.001, 'svm__kernel': 'rbf', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.6000
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kanan
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kanan...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 'scale', 'svm__degree': 5, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 2.0, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 300}
+  Overall LOSO Accuracy: 0.4500 (45.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.45      0.50      0.48        10
+       Benar       0.44      0.40      0.42        10
+
+    accuracy                           0.45        20
+   macro avg       0.45      0.45      0.45        20
+weighted avg       0.45      0.45      0.45        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 2.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 5, 'svm__gamma': 'scale', 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.4500
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : -0.0500
+
+
+
+
+Config: tune=True, n_features=200
+
+Total segments: 120  skipped: 0
+
+============================================================
+  MODEL 0 — Movement Classifier (6 classes)
+============================================================
+
+Running LOSO (10 folds) for Movement...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'poly', 'svm__gamma': 0.0001, 'svm__degree': 4, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 50}
+  Overall LOSO Accuracy: 0.5917 (59.2%)
+                 precision    recall  f1-score   support
+
+       Jep Kiri       0.72      0.65      0.68        20
+      Jep Kanan       0.68      0.65      0.67        20
+ Tangkisan Kiri       0.57      0.65      0.60        20
+Tangkisan Kanan       0.45      0.50      0.48        20
+ Kombinasi Kiri       0.65      0.55      0.59        20
+Kombinasi Kanan       0.52      0.55      0.54        20
+
+       accuracy                           0.59       120
+      macro avg       0.60      0.59      0.59       120
+   weighted avg       0.60      0.59      0.59       120
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 4, 'svm__gamma': 0.0001, 'svm__kernel': 'poly', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.5917
+  >>> Fixed‑param LOSO       : 0.6333
+  >>> Difference             : -0.0417
+
+
+============================================================
+  MODEL Correctness — Jep Kiri
+
+Running LOSO (10 folds) for Correctness-Jep Kiri...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 'auto', 'svm__degree': 5, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.5, 'svm__class_weight': 'balanced', 'svm__C': 100, 'select__k': 100}
+  Overall LOSO Accuracy: 0.8500 (85.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.82      0.90      0.86        10
+       Benar       0.89      0.80      0.84        10
+
+    accuracy                           0.85        20
+   macro avg       0.85      0.85      0.85        20
+weighted avg       0.85      0.85      0.85        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 100, 'svm__C': 100, 'svm__class_weight': 'balanced', 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovo', 'svm__degree': 5, 'svm__gamma': 'auto', 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.8500
+  >>> Fixed‑param LOSO       : 0.8500
+  >>> Difference             : +0.0000
+
+
+============================================================
+  MODEL Correctness — Jep Kanan
+
+Running LOSO (10 folds) for Correctness-Jep Kanan...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 'auto', 'svm__degree': 5, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.5, 'svm__class_weight': 'balanced', 'svm__C': 10, 'select__k': 50}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.54      0.70      0.61        10
+       Benar       0.57      0.40      0.47        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.54        20
+weighted avg       0.55      0.55      0.54        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 10, 'svm__class_weight': 'balanced', 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovo', 'svm__degree': 5, 'svm__gamma': 'auto', 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.6000
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kiri
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kiri...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.1, 'svm__degree': 5, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.1, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 200}
+  Overall LOSO Accuracy: 0.6000 (60.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.62      0.50      0.56        10
+       Benar       0.58      0.70      0.64        10
+
+    accuracy                           0.60        20
+   macro avg       0.60      0.60      0.60        20
+weighted avg       0.60      0.60      0.60        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 200, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 0.1, 'svm__decision_function_shape': 'ovr', 'svm__degree': 5, 'svm__gamma': 0.1, 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.6000
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : +0.1000
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kanan
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kanan...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': False, 'svm__kernel': 'rbf', 'svm__gamma': 1, 'svm__degree': 4, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.1, 'svm__class_weight': 'balanced', 'svm__C': 10, 'select__k': 300}
+  Overall LOSO Accuracy: 0.6500 (65.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.71      0.50      0.59        10
+       Benar       0.62      0.80      0.70        10
+
+    accuracy                           0.65        20
+   macro avg       0.66      0.65      0.64        20
+weighted avg       0.66      0.65      0.64        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 10, 'svm__class_weight': 'balanced', 'svm__coef0': 0.1, 'svm__decision_function_shape': 'ovr', 'svm__degree': 4, 'svm__gamma': 1, 'svm__kernel': 'rbf', 'svm__shrinking': False, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.6500
+  >>> Fixed‑param LOSO       : 0.7500
+  >>> Difference             : -0.1000
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kiri
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kiri...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'poly', 'svm__gamma': 0.001, 'svm__degree': 4, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.5, 'svm__class_weight': 'balanced', 'svm__C': 10, 'select__k': 200}
+  Overall LOSO Accuracy: 0.4500 (45.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.43      0.30      0.35        10
+       Benar       0.46      0.60      0.52        10
+
+    accuracy                           0.45        20
+   macro avg       0.45      0.45      0.44        20
+weighted avg       0.45      0.45      0.44        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 200, 'svm__C': 10, 'svm__class_weight': 'balanced', 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovo', 'svm__degree': 4, 'svm__gamma': 0.001, 'svm__kernel': 'poly', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.4500
+  >>> Fixed‑param LOSO       : 0.5500
+  >>> Difference             : -0.1000
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kanan
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kanan...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 'auto', 'svm__degree': 2, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 2.0, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 300}
+  Overall LOSO Accuracy: 0.5000 (50.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.50      0.50      0.50        10
+       Benar       0.50      0.50      0.50        10
+
+    accuracy                           0.50        20
+   macro avg       0.50      0.50      0.50        20
+weighted avg       0.50      0.50      0.50        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 2.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 2, 'svm__gamma': 'auto', 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.5000
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : +0.0000
+
+
+
+
+Config: tune=True, n_features=200
+
+Total segments: 120  skipped: 0
+
+============================================================
+  MODEL 0 — Movement Classifier (6 classes)
+============================================================
+
+Running LOSO (10 folds) for Movement...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': False, 'svm__kernel': 'poly', 'svm__gamma': 0.001, 'svm__degree': 5, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.5, 'svm__class_weight': 'balanced', 'svm__C': 100, 'select__k': 50}
+  Overall LOSO Accuracy: 0.6000 (60.0%)
+                 precision    recall  f1-score   support
+
+       Jep Kiri       0.72      0.65      0.68        20
+      Jep Kanan       0.61      0.70      0.65        20
+ Tangkisan Kiri       0.59      0.65      0.62        20
+Tangkisan Kanan       0.50      0.45      0.47        20
+ Kombinasi Kiri       0.67      0.60      0.63        20
+Kombinasi Kanan       0.52      0.55      0.54        20
+
+       accuracy                           0.60       120
+      macro avg       0.60      0.60      0.60       120
+   weighted avg       0.60      0.60      0.60       120
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 100, 'svm__class_weight': 'balanced', 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovo', 'svm__degree': 5, 'svm__gamma': 0.001, 'svm__kernel': 'poly', 'svm__shrinking': False, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.6000
+  >>> Fixed‑param LOSO       : 0.6333
+  >>> Difference             : -0.0333
+
+
+============================================================
+  MODEL Correctness — Jep Kiri
+
+Running LOSO (10 folds) for Correctness-Jep Kiri...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'poly', 'svm__gamma': 0.01, 'svm__degree': 4, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 2.0, 'svm__class_weight': 'balanced', 'svm__C': 100, 'select__k': 200}
+  Overall LOSO Accuracy: 0.8500 (85.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.77      1.00      0.87        10
+       Benar       1.00      0.70      0.82        10
+
+    accuracy                           0.85        20
+   macro avg       0.88      0.85      0.85        20
+weighted avg       0.88      0.85      0.85        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 200, 'svm__C': 100, 'svm__class_weight': 'balanced', 'svm__coef0': 2.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 4, 'svm__gamma': 0.01, 'svm__kernel': 'poly', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.8500
+  >>> Fixed‑param LOSO       : 0.7000
+  >>> Difference             : +0.1500
+
+
+============================================================
+  MODEL Correctness — Jep Kanan
+
+Running LOSO (10 folds) for Correctness-Jep Kanan...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 1, 'svm__degree': 2, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.1, 'svm__class_weight': None, 'svm__C': 0.001, 'select__k': 50}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.55      0.60      0.57        10
+       Benar       0.56      0.50      0.53        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.55        20
+weighted avg       0.55      0.55      0.55        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 0.001, 'svm__class_weight': None, 'svm__coef0': 0.1, 'svm__decision_function_shape': 'ovr', 'svm__degree': 2, 'svm__gamma': 1, 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.4500
+  >>> Difference             : +0.1000
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kiri
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kiri...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.1, 'svm__degree': 2, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.0, 'svm__class_weight': 'balanced', 'svm__C': 100, 'select__k': 200}
+  Overall LOSO Accuracy: 0.4500 (45.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.44      0.40      0.42        10
+       Benar       0.45      0.50      0.48        10
+
+    accuracy                           0.45        20
+   macro avg       0.45      0.45      0.45        20
+weighted avg       0.45      0.45      0.45        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 200, 'svm__C': 100, 'svm__class_weight': 'balanced', 'svm__coef0': 0.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 2, 'svm__gamma': 0.1, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.4500
+  >>> Fixed‑param LOSO       : 0.5500
+  >>> Difference             : -0.1000
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kanan
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kanan...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 'auto', 'svm__degree': 3, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.0, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 200}
+  Overall LOSO Accuracy: 0.4500 (45.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.45      0.50      0.48        10
+       Benar       0.44      0.40      0.42        10
+
+    accuracy                           0.45        20
+   macro avg       0.45      0.45      0.45        20
+weighted avg       0.45      0.45      0.45        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 200, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 0.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 3, 'svm__gamma': 'auto', 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.4500
+  >>> Fixed‑param LOSO       : 0.5500
+  >>> Difference             : -0.1000
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kiri
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kiri...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.0001, 'svm__degree': 4, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': 'balanced', 'svm__C': 100, 'select__k': 300}
+  Overall LOSO Accuracy: 0.7000 (70.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.70      0.70      0.70        10
+       Benar       0.70      0.70      0.70        10
+
+    accuracy                           0.70        20
+   macro avg       0.70      0.70      0.70        20
+weighted avg       0.70      0.70      0.70        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 100, 'svm__class_weight': 'balanced', 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 4, 'svm__gamma': 0.0001, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.7000
+  >>> Fixed‑param LOSO       : 0.7500
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kanan
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kanan...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 'scale', 'svm__degree': 4, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': None, 'svm__C': 10, 'select__k': 250}
+  Overall LOSO Accuracy: 0.4500 (45.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.45      0.50      0.48        10
+       Benar       0.44      0.40      0.42        10
+
+    accuracy                           0.45        20
+   macro avg       0.45      0.45      0.45        20
+weighted avg       0.45      0.45      0.45        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 250, 'svm__C': 10, 'svm__class_weight': None, 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 4, 'svm__gamma': 'scale', 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.4500
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : -0.0500
+
+
+
+
+Config: tune=True, n_features=200
+
+Total segments: 120  skipped: 0
+
+============================================================
+  MODEL 0 — Movement Classifier (6 classes)
+============================================================
+
+Running LOSO (10 folds) for Movement...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': True, 'svm__kernel': 'rbf', 'svm__gamma': 'scale', 'svm__degree': 2, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.0, 'svm__class_weight': None, 'svm__C': 1, 'select__k': 50}
+  Overall LOSO Accuracy: 0.6083 (60.8%)
+                 precision    recall  f1-score   support
+
+       Jep Kiri       0.70      0.70      0.70        20
+      Jep Kanan       0.67      0.70      0.68        20
+ Tangkisan Kiri       0.62      0.65      0.63        20
+Tangkisan Kanan       0.48      0.50      0.49        20
+ Kombinasi Kiri       0.65      0.55      0.59        20
+Kombinasi Kanan       0.55      0.55      0.55        20
+
+       accuracy                           0.61       120
+      macro avg       0.61      0.61      0.61       120
+   weighted avg       0.61      0.61      0.61       120
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 1, 'svm__class_weight': None, 'svm__coef0': 0.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 2, 'svm__gamma': 'scale', 'svm__kernel': 'rbf', 'svm__shrinking': True, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.6083
+  >>> Fixed‑param LOSO       : 0.5917
+  >>> Difference             : +0.0167
+
+
+============================================================
+  MODEL Correctness — Jep Kiri
+
+Running LOSO (10 folds) for Correctness-Jep Kiri...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 'scale', 'svm__degree': 3, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.0, 'svm__class_weight': 'balanced', 'svm__C': 1, 'select__k': 150}
+  Overall LOSO Accuracy: 0.8500 (85.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.77      1.00      0.87        10
+       Benar       1.00      0.70      0.82        10
+
+    accuracy                           0.85        20
+   macro avg       0.88      0.85      0.85        20
+weighted avg       0.88      0.85      0.85        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 150, 'svm__C': 1, 'svm__class_weight': 'balanced', 'svm__coef0': 0.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 3, 'svm__gamma': 'scale', 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.8500
+  >>> Fixed‑param LOSO       : 0.8000
+  >>> Difference             : +0.0500
+
+
+============================================================
+  MODEL Correctness — Jep Kanan
+
+Running LOSO (10 folds) for Correctness-Jep Kanan...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 'scale', 'svm__degree': 5, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': 'balanced', 'svm__C': 10, 'select__k': 50}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.54      0.70      0.61        10
+       Benar       0.57      0.40      0.47        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.54        20
+weighted avg       0.55      0.55      0.54        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 10, 'svm__class_weight': 'balanced', 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 5, 'svm__gamma': 'scale', 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : +0.0500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kiri
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kiri...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'linear', 'svm__gamma': 0.01, 'svm__degree': 3, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.1, 'svm__class_weight': None, 'svm__C': 1, 'select__k': 100}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.55      0.60      0.57        10
+       Benar       0.56      0.50      0.53        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.55        20
+weighted avg       0.55      0.55      0.55        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 100, 'svm__C': 1, 'svm__class_weight': None, 'svm__coef0': 0.1, 'svm__decision_function_shape': 'ovr', 'svm__degree': 3, 'svm__gamma': 0.01, 'svm__kernel': 'linear', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.6000
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kanan
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kanan...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': True, 'svm__kernel': 'rbf', 'svm__gamma': 1, 'svm__degree': 2, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.0, 'svm__class_weight': 'balanced', 'svm__C': 0.001, 'select__k': 300}
+  Overall LOSO Accuracy: 0.4500 (45.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.44      0.40      0.42        10
+       Benar       0.45      0.50      0.48        10
+
+    accuracy                           0.45        20
+   macro avg       0.45      0.45      0.45        20
+weighted avg       0.45      0.45      0.45        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 0.001, 'svm__class_weight': 'balanced', 'svm__coef0': 0.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 2, 'svm__gamma': 1, 'svm__kernel': 'rbf', 'svm__shrinking': True, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.4500
+  >>> Fixed‑param LOSO       : 0.7500
+  >>> Difference             : -0.3000
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kiri
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kiri...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.0001, 'svm__degree': 4, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 1.0, 'svm__class_weight': 'balanced', 'svm__C': 100, 'select__k': 300}
+  Overall LOSO Accuracy: 0.6500 (65.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.67      0.60      0.63        10
+       Benar       0.64      0.70      0.67        10
+
+    accuracy                           0.65        20
+   macro avg       0.65      0.65      0.65        20
+weighted avg       0.65      0.65      0.65        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 100, 'svm__class_weight': 'balanced', 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 4, 'svm__gamma': 0.0001, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.6500
+  >>> Fixed‑param LOSO       : 0.7500
+  >>> Difference             : -0.1000
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kanan
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kanan...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 'auto', 'svm__degree': 3, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.5, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 250}
+  Overall LOSO Accuracy: 0.5000 (50.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.50      0.70      0.58        10
+       Benar       0.50      0.30      0.38        10
+
+    accuracy                           0.50        20
+   macro avg       0.50      0.50      0.48        20
+weighted avg       0.50      0.50      0.48        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 250, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovr', 'svm__degree': 3, 'svm__gamma': 'auto', 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.5000
+  >>> Fixed‑param LOSO       : 0.5500
+  >>> Difference             : -0.0500
+
+
+
+
+Config: tune=True, n_features=200
+
+Total segments: 120  skipped: 0
+
+============================================================
+  MODEL 0 — Movement Classifier (6 classes)
+============================================================
+
+Running LOSO (10 folds) for Movement...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'rbf', 'svm__gamma': 'auto', 'svm__degree': 2, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 2.0, 'svm__class_weight': 'balanced', 'svm__C': 1, 'select__k': 50}
+  Overall LOSO Accuracy: 0.6250 (62.5%)
+                 precision    recall  f1-score   support
+
+       Jep Kiri       0.70      0.70      0.70        20
+      Jep Kanan       0.65      0.75      0.70        20
+ Tangkisan Kiri       0.60      0.60      0.60        20
+Tangkisan Kanan       0.53      0.50      0.51        20
+ Kombinasi Kiri       0.65      0.65      0.65        20
+Kombinasi Kanan       0.61      0.55      0.58        20
+
+       accuracy                           0.62       120
+      macro avg       0.62      0.62      0.62       120
+   weighted avg       0.62      0.62      0.62       120
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 1, 'svm__class_weight': 'balanced', 'svm__coef0': 2.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 2, 'svm__gamma': 'auto', 'svm__kernel': 'rbf', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.6250
+  >>> Fixed‑param LOSO       : 0.5917
+  >>> Difference             : +0.0333
+
+
+============================================================
+  MODEL Correctness — Jep Kiri
+
+Running LOSO (10 folds) for Correctness-Jep Kiri...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 'scale', 'svm__degree': 5, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.1, 'svm__class_weight': None, 'svm__C': 1, 'select__k': 150}
+  Overall LOSO Accuracy: 0.8000 (80.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.71      1.00      0.83        10
+       Benar       1.00      0.60      0.75        10
+
+    accuracy                           0.80        20
+   macro avg       0.86      0.80      0.79        20
+weighted avg       0.86      0.80      0.79        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 150, 'svm__C': 1, 'svm__class_weight': None, 'svm__coef0': 0.1, 'svm__decision_function_shape': 'ovo', 'svm__degree': 5, 'svm__gamma': 'scale', 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.8000
+  >>> Fixed‑param LOSO       : 0.8000
+  >>> Difference             : +0.0000
+
+
+============================================================
+  MODEL Correctness — Jep Kanan
+
+Running LOSO (10 folds) for Correctness-Jep Kanan...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 1, 'svm__degree': 2, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.5, 'svm__class_weight': 'balanced', 'svm__C': 0.001, 'select__k': 50}
+  Overall LOSO Accuracy: 0.6000 (60.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.58      0.70      0.64        10
+       Benar       0.62      0.50      0.56        10
+
+    accuracy                           0.60        20
+   macro avg       0.60      0.60      0.60        20
+weighted avg       0.60      0.60      0.60        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 0.001, 'svm__class_weight': 'balanced', 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovr', 'svm__degree': 2, 'svm__gamma': 1, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.6000
+  >>> Fixed‑param LOSO       : 0.4500
+  >>> Difference             : +0.1500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kiri
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kiri...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.1, 'svm__degree': 5, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.0, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 200}
+  Overall LOSO Accuracy: 0.4500 (45.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.43      0.30      0.35        10
+       Benar       0.46      0.60      0.52        10
+
+    accuracy                           0.45        20
+   macro avg       0.45      0.45      0.44        20
+weighted avg       0.45      0.45      0.44        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 200, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 0.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 5, 'svm__gamma': 0.1, 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.4500
+  >>> Fixed‑param LOSO       : 0.5500
+  >>> Difference             : -0.1000
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kanan
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kanan...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.01, 'svm__degree': 3, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.5, 'svm__class_weight': 'balanced', 'svm__C': 10, 'select__k': 300}
+  Overall LOSO Accuracy: 0.6000 (60.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.58      0.70      0.64        10
+       Benar       0.62      0.50      0.56        10
+
+    accuracy                           0.60        20
+   macro avg       0.60      0.60      0.60        20
+weighted avg       0.60      0.60      0.60        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 10, 'svm__class_weight': 'balanced', 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovo', 'svm__degree': 3, 'svm__gamma': 0.01, 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.6000
+  >>> Fixed‑param LOSO       : 0.6500
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kiri
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kiri...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.0001, 'svm__degree': 2, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': 'balanced', 'svm__C': 100, 'select__k': 300}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.56      0.50      0.53        10
+       Benar       0.55      0.60      0.57        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.55        20
+weighted avg       0.55      0.55      0.55        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 100, 'svm__class_weight': 'balanced', 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 2, 'svm__gamma': 0.0001, 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.7500
+  >>> Difference             : -0.2000
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kanan
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kanan...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 'scale', 'svm__degree': 2, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': 'balanced', 'svm__C': 10, 'select__k': 250}
+  Overall LOSO Accuracy: 0.4000 (40.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.42      0.50      0.45        10
+       Benar       0.38      0.30      0.33        10
+
+    accuracy                           0.40        20
+   macro avg       0.40      0.40      0.39        20
+weighted avg       0.40      0.40      0.39        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 250, 'svm__C': 10, 'svm__class_weight': 'balanced', 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 2, 'svm__gamma': 'scale', 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.4000
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : -0.1000
+  Config: tune=True, n_features=200
+
+Total segments: 120  skipped: 0
+
+============================================================
+  MODEL 0 — Movement Classifier (6 classes)
+============================================================
+
+Running LOSO (10 folds) for Movement...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': False, 'svm__kernel': 'rbf', 'svm__gamma': 'auto', 'svm__degree': 3, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': 'balanced', 'svm__C': 1, 'select__k': 50}
+  Overall LOSO Accuracy: 0.6167 (61.7%)
+                 precision    recall  f1-score   support
+
+       Jep Kiri       0.72      0.65      0.68        20
+      Jep Kanan       0.67      0.70      0.68        20
+ Tangkisan Kiri       0.62      0.65      0.63        20
+Tangkisan Kanan       0.53      0.50      0.51        20
+ Kombinasi Kiri       0.63      0.60      0.62        20
+Kombinasi Kanan       0.55      0.60      0.57        20
+
+       accuracy                           0.62       120
+      macro avg       0.62      0.62      0.62       120
+   weighted avg       0.62      0.62      0.62       120
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 1, 'svm__class_weight': 'balanced', 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 3, 'svm__gamma': 'auto', 'svm__kernel': 'rbf', 'svm__shrinking': False, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.6167
+  >>> Fixed‑param LOSO       : 0.5917
+  >>> Difference             : +0.0250
+
+
+============================================================
+  MODEL Correctness — Jep Kiri
+
+Running LOSO (10 folds) for Correctness-Jep Kiri...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 10, 'svm__degree': 2, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.1, 'svm__class_weight': 'balanced', 'svm__C': 0.1, 'select__k': 300}
+  Overall LOSO Accuracy: 0.8000 (80.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.71      1.00      0.83        10
+       Benar       1.00      0.60      0.75        10
+
+    accuracy                           0.80        20
+   macro avg       0.86      0.80      0.79        20
+weighted avg       0.86      0.80      0.79        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 0.1, 'svm__class_weight': 'balanced', 'svm__coef0': 0.1, 'svm__decision_function_shape': 'ovo', 'svm__degree': 2, 'svm__gamma': 10, 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.8000
+  >>> Fixed‑param LOSO       : 0.8000
+  >>> Difference             : +0.0000
+
+
+============================================================
+  MODEL Correctness — Jep Kanan
+
+Running LOSO (10 folds) for Correctness-Jep Kanan...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 10, 'svm__degree': 4, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 2.0, 'svm__class_weight': 'balanced', 'svm__C': 0.001, 'select__k': 50}
+  Overall LOSO Accuracy: 0.6000 (60.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.58      0.70      0.64        10
+       Benar       0.62      0.50      0.56        10
+
+    accuracy                           0.60        20
+   macro avg       0.60      0.60      0.60        20
+weighted avg       0.60      0.60      0.60        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 0.001, 'svm__class_weight': 'balanced', 'svm__coef0': 2.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 4, 'svm__gamma': 10, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.6000
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : +0.1000
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kiri
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kiri...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': True, 'svm__kernel': 'linear', 'svm__gamma': 10, 'svm__degree': 3, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 2.0, 'svm__class_weight': None, 'svm__C': 0.1, 'select__k': 100}
+  Overall LOSO Accuracy: 0.4500 (45.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.44      0.40      0.42        10
+       Benar       0.45      0.50      0.48        10
+
+    accuracy                           0.45        20
+   macro avg       0.45      0.45      0.45        20
+weighted avg       0.45      0.45      0.45        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 100, 'svm__C': 0.1, 'svm__class_weight': None, 'svm__coef0': 2.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 3, 'svm__gamma': 10, 'svm__kernel': 'linear', 'svm__shrinking': True, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.4500
+  >>> Fixed‑param LOSO       : 0.6000
+  >>> Difference             : -0.1500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kanan
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kanan...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': False, 'svm__kernel': 'rbf', 'svm__gamma': 1, 'svm__degree': 3, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.1, 'svm__class_weight': None, 'svm__C': 0.001, 'select__k': 300}
+  Overall LOSO Accuracy: 0.6000 (60.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.62      0.50      0.56        10
+       Benar       0.58      0.70      0.64        10
+
+    accuracy                           0.60        20
+   macro avg       0.60      0.60      0.60        20
+weighted avg       0.60      0.60      0.60        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 0.001, 'svm__class_weight': None, 'svm__coef0': 0.1, 'svm__decision_function_shape': 'ovo', 'svm__degree': 3, 'svm__gamma': 1, 'svm__kernel': 'rbf', 'svm__shrinking': False, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.6000
+  >>> Fixed‑param LOSO       : 0.7500
+  >>> Difference             : -0.1500
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kiri
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kiri...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.0001, 'svm__degree': 5, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 300}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.55      0.60      0.57        10
+       Benar       0.56      0.50      0.53        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.55        20
+weighted avg       0.55      0.55      0.55        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 5, 'svm__gamma': 0.0001, 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.7500
+  >>> Difference             : -0.2000
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kanan
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kanan...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 'auto', 'svm__degree': 2, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.5, 'svm__class_weight': None, 'svm__C': 10, 'select__k': 150}
+  Overall LOSO Accuracy: 0.4000 (40.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.38      0.30      0.33        10
+       Benar       0.42      0.50      0.45        10
+
+    accuracy                           0.40        20
+   macro avg       0.40      0.40      0.39        20
+weighted avg       0.40      0.40      0.39        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 150, 'svm__C': 10, 'svm__class_weight': None, 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovr', 'svm__degree': 2, 'svm__gamma': 'auto', 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.4000
+  >>> Fixed‑param LOSO       : 0.4000
+  >>> Difference             : +0.0000
+
+
+
+
+Config: tune=True, n_features=200
+
+Total segments: 120  skipped: 0
+
+============================================================
+  MODEL 0 — Movement Classifier (6 classes)
+============================================================
+
+Running LOSO (10 folds) for Movement...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.001, 'svm__degree': 4, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': 'balanced', 'svm__C': 100, 'select__k': 50}
+  Overall LOSO Accuracy: 0.5917 (59.2%)
+                 precision    recall  f1-score   support
+
+       Jep Kiri       0.65      0.65      0.65        20
+      Jep Kanan       0.68      0.65      0.67        20
+ Tangkisan Kiri       0.55      0.60      0.57        20
+Tangkisan Kanan       0.50      0.55      0.52        20
+ Kombinasi Kiri       0.62      0.50      0.56        20
+Kombinasi Kanan       0.57      0.60      0.59        20
+
+       accuracy                           0.59       120
+      macro avg       0.60      0.59      0.59       120
+   weighted avg       0.60      0.59      0.59       120
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 100, 'svm__class_weight': 'balanced', 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 4, 'svm__gamma': 0.001, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.5917
+  >>> Fixed‑param LOSO       : 0.6250
+  >>> Difference             : -0.0333
+
+
+============================================================
+  MODEL Correctness — Jep Kiri
+
+Running LOSO (10 folds) for Correctness-Jep Kiri...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 'scale', 'svm__degree': 4, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.1, 'svm__class_weight': None, 'svm__C': 10, 'select__k': 100}
+  Overall LOSO Accuracy: 0.8000 (80.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.75      0.90      0.82        10
+       Benar       0.88      0.70      0.78        10
+
+    accuracy                           0.80        20
+   macro avg       0.81      0.80      0.80        20
+weighted avg       0.81      0.80      0.80        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 100, 'svm__C': 10, 'svm__class_weight': None, 'svm__coef0': 0.1, 'svm__decision_function_shape': 'ovr', 'svm__degree': 4, 'svm__gamma': 'scale', 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.8000
+  >>> Fixed‑param LOSO       : 0.8500
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Jep Kanan
+
+Running LOSO (10 folds) for Correctness-Jep Kanan...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 'scale', 'svm__degree': 4, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': 'balanced', 'svm__C': 10, 'select__k': 50}
+  Overall LOSO Accuracy: 0.5000 (50.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.50      0.70      0.58        10
+       Benar       0.50      0.30      0.38        10
+
+    accuracy                           0.50        20
+   macro avg       0.50      0.50      0.48        20
+weighted avg       0.50      0.50      0.48        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 10, 'svm__class_weight': 'balanced', 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 4, 'svm__gamma': 'scale', 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.5000
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : +0.0000
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kiri
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kiri...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': True, 'svm__kernel': 'poly', 'svm__gamma': 'scale', 'svm__degree': 5, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.5, 'svm__class_weight': None, 'svm__C': 0.1, 'select__k': 300}
+  Overall LOSO Accuracy: 0.4000 (40.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.38      0.30      0.33        10
+       Benar       0.42      0.50      0.45        10
+
+    accuracy                           0.40        20
+   macro avg       0.40      0.40      0.39        20
+weighted avg       0.40      0.40      0.39        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 0.1, 'svm__class_weight': None, 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovr', 'svm__degree': 5, 'svm__gamma': 'scale', 'svm__kernel': 'poly', 'svm__shrinking': True, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.4000
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : -0.1000
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kanan
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kanan...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'rbf', 'svm__gamma': 1, 'svm__degree': 3, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': None, 'svm__C': 0.001, 'select__k': 300}
+  Overall LOSO Accuracy: 0.6000 (60.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.60      0.60      0.60        10
+       Benar       0.60      0.60      0.60        10
+
+    accuracy                           0.60        20
+   macro avg       0.60      0.60      0.60        20
+weighted avg       0.60      0.60      0.60        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 0.001, 'svm__class_weight': None, 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 3, 'svm__gamma': 1, 'svm__kernel': 'rbf', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.6000
+  >>> Fixed‑param LOSO       : 0.7500
+  >>> Difference             : -0.1500
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kiri
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kiri...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'poly', 'svm__gamma': 'auto', 'svm__degree': 3, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.1, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 100}
+  Overall LOSO Accuracy: 0.5000 (50.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.50      0.60      0.55        10
+       Benar       0.50      0.40      0.44        10
+
+    accuracy                           0.50        20
+   macro avg       0.50      0.50      0.49        20
+weighted avg       0.50      0.50      0.49        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 100, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 0.1, 'svm__decision_function_shape': 'ovr', 'svm__degree': 3, 'svm__gamma': 'auto', 'svm__kernel': 'poly', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.5000
+  >>> Fixed‑param LOSO       : 0.5500
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kanan
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kanan...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 'scale', 'svm__degree': 5, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': None, 'svm__C': 10, 'select__k': 250}
+  Overall LOSO Accuracy: 0.4500 (45.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.46      0.60      0.52        10
+       Benar       0.43      0.30      0.35        10
+
+    accuracy                           0.45        20
+   macro avg       0.45      0.45      0.44        20
+weighted avg       0.45      0.45      0.44        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 250, 'svm__C': 10, 'svm__class_weight': None, 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 5, 'svm__gamma': 'scale', 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.4500
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : -0.0500
+
+
+
+
+Config: tune=True, n_features=200
+
+Total segments: 120  skipped: 0
+
+============================================================
+  MODEL 0 — Movement Classifier (6 classes)
+============================================================
+
+Running LOSO (10 folds) for Movement...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'poly', 'svm__gamma': 0.0001, 'svm__degree': 4, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 1.0, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 50}
+  Overall LOSO Accuracy: 0.5833 (58.3%)
+                 precision    recall  f1-score   support
+
+       Jep Kiri       0.68      0.65      0.67        20
+      Jep Kanan       0.62      0.75      0.68        20
+ Tangkisan Kiri       0.55      0.60      0.57        20
+Tangkisan Kanan       0.47      0.45      0.46        20
+ Kombinasi Kiri       0.65      0.55      0.59        20
+Kombinasi Kanan       0.53      0.50      0.51        20
+
+       accuracy                           0.58       120
+      macro avg       0.58      0.58      0.58       120
+   weighted avg       0.58      0.58      0.58       120
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 4, 'svm__gamma': 0.0001, 'svm__kernel': 'poly', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.5833
+  >>> Fixed‑param LOSO       : 0.6333
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Jep Kiri
+
+Running LOSO (10 folds) for Correctness-Jep Kiri...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'poly', 'svm__gamma': 0.01, 'svm__degree': 4, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 2.0, 'svm__class_weight': 'balanced', 'svm__C': 0.1, 'select__k': 100}
+  Overall LOSO Accuracy: 0.8500 (85.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.77      1.00      0.87        10
+       Benar       1.00      0.70      0.82        10
+
+    accuracy                           0.85        20
+   macro avg       0.88      0.85      0.85        20
+weighted avg       0.88      0.85      0.85        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 100, 'svm__C': 0.1, 'svm__class_weight': 'balanced', 'svm__coef0': 2.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 4, 'svm__gamma': 0.01, 'svm__kernel': 'poly', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.8500
+  >>> Fixed‑param LOSO       : 0.7500
+  >>> Difference             : +0.1000
+
+
+============================================================
+  MODEL Correctness — Jep Kanan
+
+Running LOSO (10 folds) for Correctness-Jep Kanan...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 'auto', 'svm__degree': 5, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.5, 'svm__class_weight': None, 'svm__C': 10, 'select__k': 50}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.54      0.70      0.61        10
+       Benar       0.57      0.40      0.47        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.54        20
+weighted avg       0.55      0.55      0.54        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 10, 'svm__class_weight': None, 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovo', 'svm__degree': 5, 'svm__gamma': 'auto', 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.6000
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kiri
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kiri...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'linear', 'svm__gamma': 0.001, 'svm__degree': 3, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': None, 'svm__C': 0.1, 'select__k': 100}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.57      0.40      0.47        10
+       Benar       0.54      0.70      0.61        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.54        20
+weighted avg       0.55      0.55      0.54        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 100, 'svm__C': 0.1, 'svm__class_weight': None, 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 3, 'svm__gamma': 0.001, 'svm__kernel': 'linear', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.6000
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kanan
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kanan...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.1, 'svm__degree': 2, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 50}
+  Overall LOSO Accuracy: 0.6500 (65.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.64      0.70      0.67        10
+       Benar       0.67      0.60      0.63        10
+
+    accuracy                           0.65        20
+   macro avg       0.65      0.65      0.65        20
+weighted avg       0.65      0.65      0.65        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 2, 'svm__gamma': 0.1, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.6500
+  >>> Fixed‑param LOSO       : 0.6500
+  >>> Difference             : +0.0000
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kiri
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kiri...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'rbf', 'svm__gamma': 0.001, 'svm__degree': 3, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.5, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 300}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.56      0.50      0.53        10
+       Benar       0.55      0.60      0.57        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.55        20
+weighted avg       0.55      0.55      0.55        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovr', 'svm__degree': 3, 'svm__gamma': 0.001, 'svm__kernel': 'rbf', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.6000
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kanan
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kanan...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 'auto', 'svm__degree': 3, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': None, 'svm__C': 10, 'select__k': 300}
+  Overall LOSO Accuracy: 0.3500 (35.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.38      0.50      0.43        10
+       Benar       0.29      0.20      0.24        10
+
+    accuracy                           0.35        20
+   macro avg       0.34      0.35      0.34        20
+weighted avg       0.34      0.35      0.34        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 10, 'svm__class_weight': None, 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 3, 'svm__gamma': 'auto', 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.3500
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : -0.1500
+
+
+
+
+Config: tune=True, n_features=200
+
+Total segments: 120  skipped: 0
+
+============================================================
+  MODEL 0 — Movement Classifier (6 classes)
+============================================================
+
+Running LOSO (10 folds) for Movement...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'poly', 'svm__gamma': 0.0001, 'svm__degree': 2, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 2.0, 'svm__class_weight': 'balanced', 'svm__C': 100, 'select__k': 50}
+  Overall LOSO Accuracy: 0.5833 (58.3%)
+                 precision    recall  f1-score   support
+
+       Jep Kiri       0.72      0.65      0.68        20
+      Jep Kanan       0.64      0.70      0.67        20
+ Tangkisan Kiri       0.57      0.65      0.60        20
+Tangkisan Kanan       0.45      0.45      0.45        20
+ Kombinasi Kiri       0.65      0.55      0.59        20
+Kombinasi Kanan       0.50      0.50      0.50        20
+
+       accuracy                           0.58       120
+      macro avg       0.59      0.58      0.58       120
+   weighted avg       0.59      0.58      0.58       120
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 100, 'svm__class_weight': 'balanced', 'svm__coef0': 2.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 2, 'svm__gamma': 0.0001, 'svm__kernel': 'poly', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.5833
+  >>> Fixed‑param LOSO       : 0.6333
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Jep Kiri
+
+Running LOSO (10 folds) for Correctness-Jep Kiri...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.01, 'svm__degree': 5, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.0, 'svm__class_weight': 'balanced', 'svm__C': 100, 'select__k': 100}
+  Overall LOSO Accuracy: 0.8500 (85.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.77      1.00      0.87        10
+       Benar       1.00      0.70      0.82        10
+
+    accuracy                           0.85        20
+   macro avg       0.88      0.85      0.85        20
+weighted avg       0.88      0.85      0.85        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 100, 'svm__C': 100, 'svm__class_weight': 'balanced', 'svm__coef0': 0.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 5, 'svm__gamma': 0.01, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.8500
+  >>> Fixed‑param LOSO       : 0.8500
+  >>> Difference             : +0.0000
+
+
+============================================================
+  MODEL Correctness — Jep Kanan
+
+Running LOSO (10 folds) for Correctness-Jep Kanan...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 'scale', 'svm__degree': 3, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.5, 'svm__class_weight': 'balanced', 'svm__C': 10, 'select__k': 50}
+  Overall LOSO Accuracy: 0.4500 (45.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.47      0.70      0.56        10
+       Benar       0.40      0.20      0.27        10
+
+    accuracy                           0.45        20
+   macro avg       0.43      0.45      0.41        20
+weighted avg       0.43      0.45      0.41        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 10, 'svm__class_weight': 'balanced', 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovo', 'svm__degree': 3, 'svm__gamma': 'scale', 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.4500
+  >>> Fixed‑param LOSO       : 0.6000
+  >>> Difference             : -0.1500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kiri
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kiri...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.1, 'svm__degree': 3, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.1, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 200}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.57      0.40      0.47        10
+       Benar       0.54      0.70      0.61        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.54        20
+weighted avg       0.55      0.55      0.54        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 200, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 0.1, 'svm__decision_function_shape': 'ovo', 'svm__degree': 3, 'svm__gamma': 0.1, 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : +0.0500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kanan
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kanan...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.1, 'svm__degree': 5, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.1, 'svm__class_weight': None, 'svm__C': 1, 'select__k': 150}
+  Overall LOSO Accuracy: 0.5000 (50.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.50      0.50      0.50        10
+       Benar       0.50      0.50      0.50        10
+
+    accuracy                           0.50        20
+   macro avg       0.50      0.50      0.50        20
+weighted avg       0.50      0.50      0.50        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 150, 'svm__C': 1, 'svm__class_weight': None, 'svm__coef0': 0.1, 'svm__decision_function_shape': 'ovo', 'svm__degree': 5, 'svm__gamma': 0.1, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.5000
+  >>> Fixed‑param LOSO       : 0.5500
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kiri
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kiri...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': True, 'svm__kernel': 'rbf', 'svm__gamma': 0.001, 'svm__degree': 2, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.5, 'svm__class_weight': 'balanced', 'svm__C': 10, 'select__k': 300}
+  Overall LOSO Accuracy: 0.4500 (45.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.44      0.40      0.42        10
+       Benar       0.45      0.50      0.48        10
+
+    accuracy                           0.45        20
+   macro avg       0.45      0.45      0.45        20
+weighted avg       0.45      0.45      0.45        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 10, 'svm__class_weight': 'balanced', 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovo', 'svm__degree': 2, 'svm__gamma': 0.001, 'svm__kernel': 'rbf', 'svm__shrinking': True, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.4500
+  >>> Fixed‑param LOSO       : 0.6000
+  >>> Difference             : -0.1500
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kanan
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kanan...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.01, 'svm__degree': 2, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 1.0, 'svm__class_weight': 'balanced', 'svm__C': 100, 'select__k': 250}
+  Overall LOSO Accuracy: 0.4000 (40.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.38      0.30      0.33        10
+       Benar       0.42      0.50      0.45        10
+
+    accuracy                           0.40        20
+   macro avg       0.40      0.40      0.39        20
+weighted avg       0.40      0.40      0.39        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 250, 'svm__C': 100, 'svm__class_weight': 'balanced', 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 2, 'svm__gamma': 0.01, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.4000
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : -0.1000
+
+
+
+
+Config: tune=True, n_features=200
+
+Total segments: 120  skipped: 0
+
+============================================================
+  MODEL 0 — Movement Classifier (6 classes)
+============================================================
+
+Running LOSO (10 folds) for Movement...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'rbf', 'svm__gamma': 'auto', 'svm__degree': 5, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 1.0, 'svm__class_weight': None, 'svm__C': 1, 'select__k': 50}
+  Overall LOSO Accuracy: 0.6000 (60.0%)
+                 precision    recall  f1-score   support
+
+       Jep Kiri       0.72      0.65      0.68        20
+      Jep Kanan       0.62      0.75      0.68        20
+ Tangkisan Kiri       0.57      0.65      0.60        20
+Tangkisan Kanan       0.50      0.45      0.47        20
+ Kombinasi Kiri       0.65      0.55      0.59        20
+Kombinasi Kanan       0.55      0.55      0.55        20
+
+       accuracy                           0.60       120
+      macro avg       0.60      0.60      0.60       120
+   weighted avg       0.60      0.60      0.60       120
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 1, 'svm__class_weight': None, 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 5, 'svm__gamma': 'auto', 'svm__kernel': 'rbf', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.6000
+  >>> Fixed‑param LOSO       : 0.5917
+  >>> Difference             : +0.0083
+
+
+============================================================
+  MODEL Correctness — Jep Kiri
+
+Running LOSO (10 folds) for Correctness-Jep Kiri...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'poly', 'svm__gamma': 0.001, 'svm__degree': 4, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.5, 'svm__class_weight': None, 'svm__C': 10, 'select__k': 150}
+  Overall LOSO Accuracy: 0.7000 (70.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.70      0.70      0.70        10
+       Benar       0.70      0.70      0.70        10
+
+    accuracy                           0.70        20
+   macro avg       0.70      0.70      0.70        20
+weighted avg       0.70      0.70      0.70        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 150, 'svm__C': 10, 'svm__class_weight': None, 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovr', 'svm__degree': 4, 'svm__gamma': 0.001, 'svm__kernel': 'poly', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.7000
+  >>> Fixed‑param LOSO       : 0.8500
+  >>> Difference             : -0.1500
+
+
+============================================================
+  MODEL Correctness — Jep Kanan
+
+Running LOSO (10 folds) for Correctness-Jep Kanan...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 'auto', 'svm__degree': 2, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': None, 'svm__C': 10, 'select__k': 50}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.54      0.70      0.61        10
+       Benar       0.57      0.40      0.47        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.54        20
+weighted avg       0.55      0.55      0.54        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 10, 'svm__class_weight': None, 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 2, 'svm__gamma': 'auto', 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : +0.0500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kiri
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kiri...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.1, 'svm__degree': 4, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.5, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 200}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.56      0.50      0.53        10
+       Benar       0.55      0.60      0.57        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.55        20
+weighted avg       0.55      0.55      0.55        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 200, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovr', 'svm__degree': 4, 'svm__gamma': 0.1, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.6000
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kanan
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kanan...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.1, 'svm__degree': 4, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 1.0, 'svm__class_weight': 'balanced', 'svm__C': 100, 'select__k': 50}
+  Overall LOSO Accuracy: 0.6500 (65.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.67      0.60      0.63        10
+       Benar       0.64      0.70      0.67        10
+
+    accuracy                           0.65        20
+   macro avg       0.65      0.65      0.65        20
+weighted avg       0.65      0.65      0.65        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 100, 'svm__class_weight': 'balanced', 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 4, 'svm__gamma': 0.1, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.6500
+  >>> Fixed‑param LOSO       : 0.6500
+  >>> Difference             : +0.0000
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kiri
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kiri...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'poly', 'svm__gamma': 'auto', 'svm__degree': 2, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.1, 'svm__class_weight': None, 'svm__C': 1, 'select__k': 50}
+  Overall LOSO Accuracy: 0.4000 (40.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.38      0.30      0.33        10
+       Benar       0.42      0.50      0.45        10
+
+    accuracy                           0.40        20
+   macro avg       0.40      0.40      0.39        20
+weighted avg       0.40      0.40      0.39        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 1, 'svm__class_weight': None, 'svm__coef0': 0.1, 'svm__decision_function_shape': 'ovo', 'svm__degree': 2, 'svm__gamma': 'auto', 'svm__kernel': 'poly', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.4000
+  >>> Fixed‑param LOSO       : 0.6000
+  >>> Difference             : -0.2000
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kanan
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kanan...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 'auto', 'svm__degree': 2, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 2.0, 'svm__class_weight': 'balanced', 'svm__C': 100, 'select__k': 300}
+  Overall LOSO Accuracy: 0.5000 (50.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.50      0.50      0.50        10
+       Benar       0.50      0.50      0.50        10
+
+    accuracy                           0.50        20
+   macro avg       0.50      0.50      0.50        20
+weighted avg       0.50      0.50      0.50        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 100, 'svm__class_weight': 'balanced', 'svm__coef0': 2.0, 'svm__decision_function_shape': 'ovo', 'svm__degree': 2, 'svm__gamma': 'auto', 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.5000
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : +0.0000
+
+
+
+
+Config: tune=True, n_features=200
+
+Total segments: 120  skipped: 0
+
+============================================================
+  MODEL 0 — Movement Classifier (6 classes)
+============================================================
+
+Running LOSO (10 folds) for Movement...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': True, 'svm__kernel': 'rbf', 'svm__gamma': 'auto', 'svm__degree': 2, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': 'balanced', 'svm__C': 1, 'select__k': 50}
+  Overall LOSO Accuracy: 0.5917 (59.2%)
+                 precision    recall  f1-score   support
+
+       Jep Kiri       0.68      0.65      0.67        20
+      Jep Kanan       0.68      0.65      0.67        20
+ Tangkisan Kiri       0.57      0.65      0.60        20
+Tangkisan Kanan       0.48      0.55      0.51        20
+ Kombinasi Kiri       0.62      0.50      0.56        20
+Kombinasi Kanan       0.55      0.55      0.55        20
+
+       accuracy                           0.59       120
+      macro avg       0.60      0.59      0.59       120
+   weighted avg       0.60      0.59      0.59       120
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 1, 'svm__class_weight': 'balanced', 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 2, 'svm__gamma': 'auto', 'svm__kernel': 'rbf', 'svm__shrinking': True, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.5917
+  >>> Fixed‑param LOSO       : 0.5917
+  >>> Difference             : +0.0000
+
+
+============================================================
+  MODEL Correctness — Jep Kiri
+
+Running LOSO (10 folds) for Correctness-Jep Kiri...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': False, 'svm__kernel': 'poly', 'svm__gamma': 'scale', 'svm__degree': 5, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.5, 'svm__class_weight': None, 'svm__C': 100, 'select__k': 200}
+  Overall LOSO Accuracy: 0.8000 (80.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.75      0.90      0.82        10
+       Benar       0.88      0.70      0.78        10
+
+    accuracy                           0.80        20
+   macro avg       0.81      0.80      0.80        20
+weighted avg       0.81      0.80      0.80        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 200, 'svm__C': 100, 'svm__class_weight': None, 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovo', 'svm__degree': 5, 'svm__gamma': 'scale', 'svm__kernel': 'poly', 'svm__shrinking': False, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.8000
+  >>> Fixed‑param LOSO       : 0.6500
+  >>> Difference             : +0.1500
+
+
+============================================================
+  MODEL Correctness — Jep Kanan
+
+Running LOSO (10 folds) for Correctness-Jep Kanan...
+  Best params fold 1: {'svm__tol': 0.001, 'svm__shrinking': True, 'svm__kernel': 'sigmoid', 'svm__gamma': 'scale', 'svm__degree': 2, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': 'balanced', 'svm__C': 10, 'select__k': 50}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.54      0.70      0.61        10
+       Benar       0.57      0.40      0.47        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.54        20
+weighted avg       0.55      0.55      0.54        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 50, 'svm__C': 10, 'svm__class_weight': 'balanced', 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 2, 'svm__gamma': 'scale', 'svm__kernel': 'sigmoid', 'svm__shrinking': True, 'svm__tol': 0.001}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : +0.0500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kiri
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kiri...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': True, 'svm__kernel': 'linear', 'svm__gamma': 0.0001, 'svm__degree': 3, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.1, 'svm__class_weight': 'balanced', 'svm__C': 10, 'select__k': 100}
+  Overall LOSO Accuracy: 0.3500 (35.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.29      0.20      0.24        10
+       Benar       0.38      0.50      0.43        10
+
+    accuracy                           0.35        20
+   macro avg       0.34      0.35      0.34        20
+weighted avg       0.34      0.35      0.34        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 100, 'svm__C': 10, 'svm__class_weight': 'balanced', 'svm__coef0': 0.1, 'svm__decision_function_shape': 'ovr', 'svm__degree': 3, 'svm__gamma': 0.0001, 'svm__kernel': 'linear', 'svm__shrinking': True, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.3500
+  >>> Fixed‑param LOSO       : 0.6000
+  >>> Difference             : -0.2500
+
+
+============================================================
+  MODEL Correctness — Tangkisan Kanan
+
+Running LOSO (10 folds) for Correctness-Tangkisan Kanan...
+  Best params fold 1: {'svm__tol': 0.0001, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 0.01, 'svm__degree': 5, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 0.5, 'svm__class_weight': 'balanced', 'svm__C': 100, 'select__k': 300}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.56      0.50      0.53        10
+       Benar       0.55      0.60      0.57        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.55        20
+weighted avg       0.55      0.55      0.55        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 100, 'svm__class_weight': 'balanced', 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovr', 'svm__degree': 5, 'svm__gamma': 0.01, 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.0001}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.6500
+  >>> Difference             : -0.1000
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kiri
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kiri...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': True, 'svm__kernel': 'rbf', 'svm__gamma': 0.001, 'svm__degree': 5, 'svm__decision_function_shape': 'ovo', 'svm__coef0': 0.5, 'svm__class_weight': None, 'svm__C': 10, 'select__k': 300}
+  Overall LOSO Accuracy: 0.5500 (55.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.55      0.60      0.57        10
+       Benar       0.56      0.50      0.53        10
+
+    accuracy                           0.55        20
+   macro avg       0.55      0.55      0.55        20
+weighted avg       0.55      0.55      0.55        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 10, 'svm__class_weight': None, 'svm__coef0': 0.5, 'svm__decision_function_shape': 'ovo', 'svm__degree': 5, 'svm__gamma': 0.001, 'svm__kernel': 'rbf', 'svm__shrinking': True, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.5500
+  >>> Fixed‑param LOSO       : 0.6000
+  >>> Difference             : -0.0500
+
+
+============================================================
+  MODEL Correctness — Kombinasi Kanan
+
+Running LOSO (10 folds) for Correctness-Kombinasi Kanan...
+  Best params fold 1: {'svm__tol': 0.01, 'svm__shrinking': False, 'svm__kernel': 'sigmoid', 'svm__gamma': 'scale', 'svm__degree': 5, 'svm__decision_function_shape': 'ovr', 'svm__coef0': 1.0, 'svm__class_weight': 'balanced', 'svm__C': 10, 'select__k': 300}
+  Overall LOSO Accuracy: 0.4000 (40.0%)
+              precision    recall  f1-score   support
+
+       Salah       0.43      0.60      0.50        10
+       Benar       0.33      0.20      0.25        10
+
+    accuracy                           0.40        20
+   macro avg       0.38      0.40      0.38        20
+weighted avg       0.38      0.40      0.38        20
+
+  Selected best params (appeared in 1/10 folds):
+    {'select__k': 300, 'svm__C': 10, 'svm__class_weight': 'balanced', 'svm__coef0': 1.0, 'svm__decision_function_shape': 'ovr', 'svm__degree': 5, 'svm__gamma': 'scale', 'svm__kernel': 'sigmoid', 'svm__shrinking': False, 'svm__tol': 0.01}
+
+  >>> Nested LOSO (with tuning): 0.4000
+  >>> Fixed‑param LOSO       : 0.5000
+  >>> Difference             : -0.1000

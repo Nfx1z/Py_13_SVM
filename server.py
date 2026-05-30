@@ -3,20 +3,16 @@
 silat_server.py  —  Flask Inference + Data Collection Server
 =============================================================
 Endpoints:
-  POST /data      ← ESP32 sends raw sensor row here (unchanged format)
+  POST /data      ← ESP32 HTTP fallback (still works)
+  UDP  :5005      ← ESP32 UDP primary (ultra-low latency)
   GET  /predict   ← Returns prediction for the current window
   POST /config    ← Update window_size and none_threshold at runtime
   GET  /status    ← Buffer status (how many samples collected)
   GET  /stream    ← SSE stream: auto-pushes predictions every ~500 ms
   GET  /          ← Serves the dashboard HTML (silat_dashboard.html)
-
-Usage:
-  python silat_server.py
-
-Then open:  http://localhost:5000
 """
 
-import os, json, time, threading, queue, collections
+import os, json, time, threading, queue, collections, socket
 import numpy as np
 import pandas as pd
 import joblib
@@ -29,14 +25,14 @@ from scipy import stats as scipy_stats
 # ══════════════════════════════════════════════════════════════════
 SERVER_CONFIG = {
     "model_dir"      : "./model",
-    "data_log_file"  : "./data_realtime.csv",   # keeps writing like before
+    "data_log_file"  : "./data_realtime.csv",
     "host"           : "0.0.0.0",
     "port"           : 5000,
+    "udp_port"       : 5005,       # ← NEW: UDP listener port
 
-    # ── Inference defaults (adjustable at runtime via /config) ───
-    "window_size"    : 30,     # number of samples per prediction window
-    "none_threshold" : 0.40,   # Model 0 confidence below this → "None"
-    "buffer_maxlen"  : 500,    # rolling buffer size (keep last N samples)
+    "window_size"    : 30,
+    "none_threshold" : 0.40,
+    "buffer_maxlen"  : 500,
 }
 
 MOVEMENT_CLASSES = [
@@ -45,7 +41,6 @@ MOVEMENT_CLASSES = [
     "Kombinasi Kiri", "Kombinasi Kanan",
 ]
 
-# CSV column names (must match what ESP32 sends)
 SENSOR_COLS = []
 for i in range(4):
     for a in "xyz":
@@ -58,7 +53,7 @@ for i in range(4):
 #  FEATURE EXTRACTION  (identical to silat_train.py)
 # ══════════════════════════════════════════════════════════════════
 
-N_SENSORS = 4
+N_SENSORS  = 4
 ACCEL_COLS = [[f"a{a}{i}" for a in "xyz"] for i in range(N_SENSORS)]
 GYRO_COLS  = [[f"g{a}{i}" for a in "xyz"] for i in range(N_SENSORS)]
 
@@ -96,7 +91,6 @@ def _gyro_mag(data, cols, si):
 
 
 def extract_features(df_window: pd.DataFrame) -> np.ndarray:
-    """426 topology-aware features from a window DataFrame."""
     data = df_window[SENSOR_COLS].values.astype(float)
     cols = SENSOR_COLS
     n    = len(data)
@@ -140,8 +134,6 @@ def extract_features(df_window: pd.DataFrame) -> np.ndarray:
 # ══════════════════════════════════════════════════════════════════
 
 class ModelBank:
-    """Loads and caches all 7 SVM models from disk."""
-
     def __init__(self, model_dir: str):
         self.model_dir = model_dir
         self.movement_model = None
@@ -166,20 +158,12 @@ class ModelBank:
                 print(f"  [OK] Correctness model: {mv}")
 
     def predict(self, feat: np.ndarray, none_threshold: float) -> dict:
-        """
-        Run 2-stage inference on a 426-feature vector.
-
-        Returns a dict with movement, correctness, confidences.
-        """
         feat_2d = feat.reshape(1, -1)
-
-        # Stage 1 — movement
         proba   = self.movement_model.predict_proba(feat_2d)[0]
         classes = self.movement_model.classes_
         best_i  = int(np.argmax(proba))
         max_p   = float(proba[best_i])
         pred_mv = str(classes[best_i])
-
         mv_probs = {str(c): round(float(p), 4) for c, p in zip(classes, proba)}
 
         if max_p < none_threshold:
@@ -191,7 +175,6 @@ class ModelBank:
                 "timestamp"       : datetime.now().isoformat(),
             }
 
-        # Stage 2 — correctness
         correctness = None
         if pred_mv in self.correctness_models:
             c_model = self.correctness_models[pred_mv]
@@ -217,17 +200,15 @@ class ModelBank:
 
 app = Flask(__name__)
 
-# ── Shared state ─────────────────────────────────────────────────
 _buffer      = collections.deque(maxlen=SERVER_CONFIG["buffer_maxlen"])
 _buffer_lock = threading.Lock()
-_sse_queue   = queue.Queue(maxsize=50)  # for SSE broadcast
+_sse_queue   = queue.Queue(maxsize=50)
 _last_result = {}
 _runtime_cfg = {
     "window_size"    : SERVER_CONFIG["window_size"],
     "none_threshold" : SERVER_CONFIG["none_threshold"],
 }
 
-# Load models once at startup
 print("Loading SVM models…")
 try:
     models = ModelBank(SERVER_CONFIG["model_dir"])
@@ -236,13 +217,76 @@ except FileNotFoundError as e:
     print(f"[ERROR] {e}")
     models = None
 
-# Ensure CSV header exists
 if not os.path.exists(SERVER_CONFIG["data_log_file"]):
     with open(SERVER_CONFIG["data_log_file"], "w") as f:
         f.write("timestamp," + ",".join(SENSOR_COLS) + "\n")
 
+# ── CSV log is shared by both HTTP and UDP, use a dedicated lock ──
+_csv_lock = threading.Lock()
 
-# ── /data  —  receive ESP32 POST ─────────────────────────────────
+
+def _ingest_row(nums: list):
+    """
+    Core ingestion logic shared by both HTTP /data and UDP listener.
+    Writes to CSV and pushes into the rolling buffer.
+    """
+    ts  = datetime.now()
+    row = dict(zip(SENSOR_COLS, nums))
+    row["timestamp"] = ts
+
+    with _csv_lock:
+        with open(SERVER_CONFIG["data_log_file"], "a") as f:
+            f.write(ts.strftime("%Y-%m-%d %H:%M:%S.%f") + "," +
+                    ",".join(f"{v:.4f}" for v in nums) + "\n")
+
+    with _buffer_lock:
+        _buffer.append(row)
+
+
+# ══════════════════════════════════════════════════════════════════
+#  UDP LISTENER  (runs in a background daemon thread)
+# ══════════════════════════════════════════════════════════════════
+
+def udp_listener():
+    """
+    Listens for raw comma-separated sensor packets on UDP_PORT.
+    Packet format: identical to HTTP — 24 comma-separated floats.
+    No ACK is sent back (fire-and-forget for minimum latency).
+    """
+    udp_port = SERVER_CONFIG["udp_port"]
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
+    # Increase receive buffer to handle bursts (default ~212KB → 1MB)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 1024 * 1024)
+
+    sock.bind(("0.0.0.0", udp_port))
+    print(f"[UDP] Listening on port {udp_port}…")
+
+    while True:
+        try:
+            data, addr = sock.recvfrom(1024)
+            raw = data.decode("utf-8").strip()
+            vals = raw.split(",")
+
+            if len(vals) != 24:
+                print(f"[UDP][WARN] Expected 24 values, got {len(vals)} from {addr}")
+                continue
+
+            nums = [float(v) for v in vals]
+            _ingest_row(nums)
+
+        except ValueError:
+            print(f"[UDP][WARN] Non-numeric data received from {addr}: {raw[:60]}")
+        except Exception as e:
+            print(f"[UDP][ERROR] {e}")
+
+
+# ══════════════════════════════════════════════════════════════════
+#  FLASK ROUTES
+# ══════════════════════════════════════════════════════════════════
+
+# ── /data  —  HTTP fallback (keep for compatibility) ─────────────
 @app.route("/data", methods=["POST"])
 def receive_data():
     raw = request.form.get("data", "")
@@ -258,23 +302,11 @@ def receive_data():
     except ValueError:
         return "non-numeric value", 400
 
-    ts  = datetime.now()
-    row = dict(zip(SENSOR_COLS, nums))
-    row["timestamp"] = ts
-
-    # Write to CSV log (keep same file as before)
-    with open(SERVER_CONFIG["data_log_file"], "a") as f:
-        f.write(ts.strftime("%Y-%m-%d %H:%M:%S.%f") + "," +
-                ",".join(f"{v:.4f}" for v in nums) + "\n")
-
-    # Add to rolling buffer
-    with _buffer_lock:
-        _buffer.append(row)
-
+    _ingest_row(nums)
     return "OK", 200
 
 
-# ── /predict  —  run inference on current window ─────────────────
+# ── /predict ─────────────────────────────────────────────────────
 @app.route("/predict", methods=["GET"])
 def predict():
     if models is None:
@@ -293,21 +325,19 @@ def predict():
             "need"       : win,
         }), 202
 
-    # Take the most recent `window_size` samples
     window_rows = buf_list[-win:]
     df_win = pd.DataFrame(window_rows)[SENSOR_COLS]
 
     try:
         feat   = extract_features(df_win)
         result = models.predict(feat, thr)
-        result["buffer_size"] = len(buf_list)
-        result["window_size"] = win
+        result["buffer_size"]    = len(buf_list)
+        result["window_size"]    = win
         result["none_threshold"] = thr
 
         global _last_result
         _last_result = result
 
-        # Push to SSE queue (non-blocking)
         try:
             _sse_queue.put_nowait(result)
         except queue.Full:
@@ -319,7 +349,7 @@ def predict():
         return jsonify({"error": str(e)}), 500
 
 
-# ── /config  —  update window_size and none_threshold ────────────
+# ── /config ──────────────────────────────────────────────────────
 @app.route("/config", methods=["POST"])
 def update_config():
     body = request.get_json(silent=True) or {}
@@ -336,37 +366,30 @@ def update_config():
             return jsonify({"error": "none_threshold must be 0.0–1.0"}), 400
         _runtime_cfg["none_threshold"] = thr
 
-    return jsonify({
-        "status": "updated",
-        "config": _runtime_cfg,
-    }), 200
+    return jsonify({"status": "updated", "config": _runtime_cfg}), 200
 
 
-# ── /status  —  buffer info ───────────────────────────────────────
+# ── /status ──────────────────────────────────────────────────────
 @app.route("/status", methods=["GET"])
 def status():
     with _buffer_lock:
         n = len(_buffer)
     return jsonify({
-        "buffer_size"    : n,
-        "buffer_maxlen"  : SERVER_CONFIG["buffer_maxlen"],
-        "window_size"    : _runtime_cfg["window_size"],
-        "none_threshold" : _runtime_cfg["none_threshold"],
-        "models_loaded"  : models is not None,
+        "buffer_size"     : n,
+        "buffer_maxlen"   : SERVER_CONFIG["buffer_maxlen"],
+        "window_size"     : _runtime_cfg["window_size"],
+        "none_threshold"  : _runtime_cfg["none_threshold"],
+        "models_loaded"   : models is not None,
         "movement_classes": MOVEMENT_CLASSES,
+        "udp_port"        : SERVER_CONFIG["udp_port"],   # ← visible in status
     }), 200
 
 
-# ── /stream  —  SSE: auto-push predictions ────────────────────────
+# ── /stream  —  SSE ───────────────────────────────────────────────
 @app.route("/stream", methods=["GET"])
 def stream():
-    """
-    Server-Sent Events endpoint.
-    Every 500 ms: runs inference and pushes result to all connected clients.
-    """
     def event_generator():
         while True:
-            # Run inference on current window
             if models is not None:
                 win = _runtime_cfg["window_size"]
                 thr = _runtime_cfg["none_threshold"]
@@ -401,7 +424,7 @@ def stream():
                              "X-Accel-Buffering": "no"})
 
 
-# ── /  —  serve dashboard ─────────────────────────────────────────
+# ── / ─────────────────────────────────────────────────────────────
 @app.route("/")
 def dashboard():
     html_path = os.path.join(os.path.dirname(__file__), "silat_dashboard.html")
@@ -415,9 +438,14 @@ def dashboard():
 # ══════════════════════════════════════════════════════════════════
 
 if __name__ == "__main__":
-    print(f"\nStarting Silat Inference Server on port {SERVER_CONFIG['port']}…")
+    # Start UDP listener in a background daemon thread
+    udp_thread = threading.Thread(target=udp_listener, daemon=True)
+    udp_thread.start()
+
+    print(f"\nStarting Silat Inference Server…")
     print(f"  Dashboard  → http://localhost:{SERVER_CONFIG['port']}/")
-    print(f"  Data in    → POST http://<your-ip>:{SERVER_CONFIG['port']}/data")
+    print(f"  Data (HTTP)→ POST http://<your-ip>:{SERVER_CONFIG['port']}/data")
+    print(f"  Data (UDP) → UDP  <your-ip>:{SERVER_CONFIG['udp_port']}          ← primary")
     print(f"  Predict    → GET  http://localhost:{SERVER_CONFIG['port']}/predict")
     print(f"  Config     → POST http://localhost:{SERVER_CONFIG['port']}/config")
     print()
